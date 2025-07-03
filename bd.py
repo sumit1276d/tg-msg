@@ -1,210 +1,88 @@
-import telebot
-
-from telebot import types
-
-import threading
-
-
-
-# === List of Bot Tokens ===
-
-BOT_TOKENS = [
-
-    '7346893218:AAGg2hSy4c0OqSfKYGm2Ec30hj-Y0GohUR4',
-    '7737238053:AAH2ct3AsBmA_dt_sToviQpbiku0WgdoPCA',
-
-    
-
-    # Add more tokens here if needed
-
-]
-
-
-
-# === Main Menu Text ===
-
-MAIN_MENU_TEXT = (
-
-    "✅ 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗰𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 𝗳𝗼𝗿 𝗽𝗿𝗲𝗺𝗶𝘂𝗺 𝗰𝘂𝘀𝘁𝗼𝗺𝗲𝗿𝘀 ✅\n"
-
-    "✅ 𝗔𝗹𝗹 𝗽𝗮𝗶𝗱, 𝗦𝗲𝗹𝗲𝗰𝘁 𝗮𝗻𝗱 𝗯𝘂𝘆 ✅\n\n"
-
-    "❌𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗰𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 𝗳𝗼𝗿 𝗽𝗿𝗲𝗺𝗶𝘂𝗺 𝗰𝘂𝘀𝘁𝗼𝗺𝗲𝗿𝘀 ❌\n"
-
-    "❌ 𝗔𝗹𝗹 𝗽𝗮𝗶𝗱, 𝗦𝗲𝗹𝗲𝗰𝘁 𝗮𝗻𝗱 𝗯𝘂𝘆 ❌\n\n"
-
-    "✅𝟭. 𝗠𝗼𝗺 𝘀𝗼𝗻 ( 𝟰,𝟯𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "🍓𝟮. 𝗦𝗶𝘀 𝗯𝗿𝗼 ( 𝟰,𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️ )\n"
-
-    "🍆𝟯. 𝗖𝗽 𝗸!𝗱𝘀 ( 𝟱𝟬,𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "✅𝟰. 𝗗𝗮𝗱 𝗱𝗮𝘂𝗴𝗵𝘁𝗲𝗿 ( 𝟰,𝟬𝟬𝟬+  𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "⭐️𝟱. 𝗥@𝗽𝗲 & 𝗳𝗼𝗿𝗰𝗲 ( 𝟱𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️ )\n"
-
-    "🍑𝟲. 𝗧𝗲𝗲𝗻 ( 𝟭𝟬,𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "✅𝟯. 𝗨𝘀𝗮 𝗖𝗣  ( 𝟭,𝟲𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "🍓𝟴. 𝗛𝗶𝗱𝗱𝗲𝗻 𝗰𝗮𝗺 ( 𝟰,𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "🍆𝟵. 𝗦𝗻𝗮𝗽 𝗶𝗻𝘀𝘁𝗮 𝗹𝗲𝗮𝗸 ( 𝟱𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "✅𝟭𝟬. 𝗝𝗮𝗽𝗮𝗻𝗲𝘀𝗲 ( 𝟱𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "⭐️𝟭𝟭. 𝗕𝗹𝗮𝗰𝗸 𝘁𝗲𝗲𝗻 𝘃𝗶𝗱𝗲𝗼𝘀 ( 𝟭𝟬𝟬𝟬+ 𝘃𝗶𝗱�_e𝗼𝘀 ✅️)\n"
-
-    "🏃‍♂️𝟭𝟮. 𝗢𝗻𝗹𝘆 𝗳𝗮𝗻 ( 𝟭𝟬𝟬𝟬𝟬+ ✅️)\n"
-
-    "🍑𝟭𝟯. 𝗟𝗲𝗮𝗸𝘀 ( 𝟭𝟬𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️ )\n"
-
-    "🍆 𝟭𝟰. 𝗔𝗻𝗶𝗺𝗮𝗹𝘀 𝘄𝗶𝘁𝗵 𝗴𝗶𝗿𝗹𝘀 ( 𝟮𝟱𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "🍓 𝟭𝟱. 𝗣𝘂𝗯𝗹𝗶𝗰 𝗮𝗴𝗲𝗻𝘁𝘀 ( 𝟭𝟰𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️)\n"
-
-    "🔥 𝟭𝟲. 𝗚𝗮𝘆 𝗖𝗣 ( 𝟭𝟬,𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅️) \n"
-
-    "🥵 𝟭𝟳. 𝗧𝗮𝗺𝗶𝗹, 𝗠𝗮𝗹𝗹𝘂 ( 𝟭𝟬𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅)\n"
-
-    "😍 𝟭𝟴. 𝗚𝗶𝗿𝗹𝘀 𝗻𝘂𝗱𝗲 𝗽𝗶𝗰𝘀 ( 𝟭𝟬𝟬𝗞 𝗣𝗵𝗼𝘁𝗼𝘀 ✅)\n"
-
-    "🍑 𝟭𝟵. 𝗗𝗿𝘂𝗴𝗴𝗲𝗱  𝗴𝗶𝗿𝗹 𝗳#𝗰𝗸 ( 𝟲𝟱𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🔥 𝟮𝟭. 𝗚𝗶𝗿𝗹𝘀 𝗕𝗹𝗮𝗰𝗸 𝗺𝗮𝗶𝗹 ( 𝟰𝟬𝟬𝟬+ 𝘃𝗶𝗱𝗲𝗼𝘀 ✅)\n"
-
-    "🤤 𝟮𝟮. 𝗜𝗻𝗱𝗶𝗮𝗻 𝗗𝗲𝘀𝗶 ( 𝟯𝟬,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🤩 𝟮𝟯. 𝗢𝗹𝗱 𝗮𝗴𝗲 𝗚𝗿𝗮𝗻𝗻𝘆 𝗦#𝘅 ( 𝟰𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🔞 𝟮𝟰. 𝗦𝗰𝗵𝗼𝗼𝗹 𝗚𝗶𝗿𝗹𝘀 ( 𝟮,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🥵 𝟮𝟱. 𝗖𝗵𝗶𝗻𝗲𝘀𝗲 𝗧𝗲𝗲𝗻 ( 𝟴,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🔥 𝟮𝟲. 𝗦𝗻𝗮𝗽𝗴𝗼𝗱 ( 𝟱𝟬,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🌟 𝟮𝟳. 𝗕𝗗𝗠𝗦 ( 𝟭,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "😍 𝟮𝟴. 𝗣𝗲𝗲 & 𝗦𝗰𝗮𝘁 ( 𝟭,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "🤤 𝟮𝟵. 𝗦𝗵𝗲𝗺𝗮𝗹𝗲 ( 𝟮,𝟬𝟬𝟬+ 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n"
-
-    "❤️ 𝟮9. 𝗔𝗹𝗹 𝗩𝗜𝗗𝗘𝗢𝗦 𝗚𝗥𝗢𝗨𝗣𝗦 + �_M𝗘𝗚𝗔 𝗟𝗜𝗡𝗞𝗦 ( 𝟮,𝟬𝟬𝟬𝟬𝟬 + 𝗩𝗶𝗱𝗲𝗼𝘀 ✅ )\n\n"
-
-    "📩 𝗗𝗺 𝗳𝗼𝗿 𝗯𝘂𝘆 𝗮𝗻𝗱 𝗳𝘂𝗹𝗹 𝗱𝗲𝘁𝗮𝗶𝗹𝘀 ✅\n"
-
-    "@pepesellsss\n"
-
-    "@pepesellsss\n"
-
-    "@pepesellsss\n"
-
-    "@pepesellsss\n"
-
-    "@pepesellsss\n"
-
-    "@pepesellsssr"
-
-)
-
-
-
-# === Set Up Each Bot ===
-
-def setup_bot(api_token):
-
-    bot = telebot.TeleBot(api_token)
-
-
-
-    # === Show Main Menu ===
-
-    def send_main_menu(message):
-
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-
-        markup.add("📋 Menu", "✉️ DM for Buying", "💳 Payment Method")
-
-        bot.send_message(message.chat.id, MAIN_MENU_TEXT, reply_markup=markup)
-
-
-
-    # === /start Command ===
-
-    @bot.message_handler(commands=['start'])
-
-    def handle_start(message):
-
-        send_main_menu(message)
-
-
-
-    # === 📋 Menu Button ===
-
-    @bot.message_handler(func=lambda m: m.text == "📋 Menu")
-
-    def handle_menu(message):
-
-        send_main_menu(message)
-
-
-
-    # === ✉️ DM for Buying Button ===
-
-    @bot.message_handler(func=lambda m: m.text == "✉️ DM for Buying")
-
-    def handle_dm_buy(message):
-
-        bot.send_message(message.chat.id, "📩 𝗗𝗠 𝗳𝗼𝗿 𝗯𝘂𝘆𝗶𝗻𝗴:\n@pepesellsss\nhttps://t.me/pepesellsss")
-
-
-
-   # === 💳 Payment Method Button ===
-
-    @bot.message_handler(func=lambda m: m.text == "💳 Payment Method")
-
-    def handle_payment(message):
-
-        bot.send_message(
-
-            message.chat.id,
-
-            "💰 *We accept:*\n"
-
-            "🎀 PayPal\n"
-
-            "🎀 Bank Transfer (Remitly / Western Union / TapTap)\n"
-
-            "🎀 Gift Cards\n"
-
-            "🎀 Crypto via Binance\n"
-
-            "🎀 CashApp\n"
-
-            "🎀 Zelle",
-
-            parse_mode="Markdown"
-
-        )
-
-
-
-
-
-    # === Start Polling ===
-
-    bot.polling()
-
-
-
-# === Launch Bots in Threads ===
-
-def run_bots():
-
-    for token in BOT_TOKENS:
-
-        threading.Thread(target=setup_bot, args=(token,)).start()
-
-
-
-run_bots()
+import asyncio
+from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
+from telethon.tl.functions.messages import GetHistoryRequest
+from telethon.tl.functions.channels import CreateChannelRequest, InviteToChannelRequest
+from telethon.tl.functions.messages import ImportChatInviteRequest
+from telethon.tl.types import InputPeerChannel, InputChannel
+from telethon.errors import ChatAdminRequiredError
+
+# REPLACE THESE
+API_ID = 23231941
+API_HASH = '7da383341f3696f2933e660031b7a1ea'
+STRING_SESSION = 'BQFifcUAcZvvJdCusbsuhtaKaHYfgIHTqedY1jfktaLBU1fneXYL9CveYWSaT8ngrEMCWObhVMaWdjVqIZgRiWzHJIRKuJMY5Aj32Sb__o2Sx-0b5QVE-N8fhDZDrMe4oV6vQa_IZbhtG5tnXUzXCYzx0hlq_4Jm9cZOu4DacHDTPApwEyTvos3pdXCluNxSJ0V4JXEzgsrDB5PFL841ZeziLKQ5JDjxk7NoPR0lV1nve-B3RaSGr6RsMFb2Pcn21VhseNrg2p2KMW0nE3oEyK80EYdseoS1xW-rrzzibsK87Mfk5vo2h1q65SPXLr0Hv7_cTjWVpV-CaKlMjqXzzpLXqQLf_wAAAAHB9U1nAA'
+
+async def main():
+    async with TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH) as client:
+        print("✅ Logged in as:", (await client.get_me()).username)
+
+        # Step 1: Find the first addlist link in saved messages
+        saved = await client.get_messages('me', limit=20)
+        addlist_link = None
+        for msg in saved:
+            if msg.message and ('t.me' in msg.message or 'telegram.me' in msg.message):
+                addlist_link = msg.message.strip()
+                break
+
+        if not addlist_link:
+            print("❌ No addlist link found in saved messages.")
+            return
+
+        print("📎 Found addlist link:", addlist_link)
+
+        # Step 2: Join the source channel
+        try:
+            if '/+' in addlist_link:
+                hash_part = addlist_link.split('/+')[-1]
+                updates = await client(ImportChatInviteRequest(hash_part))
+                source = updates.chats[0]
+            else:
+                source = await client.get_entity(addlist_link)
+        except Exception as e:
+            print("❌ Failed to join source channel:", e)
+            return
+
+        print("📥 Joined source channel:", source.title)
+
+        # Step 3: Create a new channel
+        result = await client(CreateChannelRequest(
+            title=source.title + " Clone",
+            about="Cloned by @YourBot",
+            megagroup=False
+        ))
+        new_channel = result.chats[0]
+        print("✅ Created new channel:", new_channel.title)
+
+        # Step 4: Copy messages from source to destination
+        print("📤 Forwarding messages...")
+        offset_id = 0
+        limit = 100
+        total = 0
+
+        while True:
+            history = await client(GetHistoryRequest(
+                peer=source,
+                offset_id=offset_id,
+                offset_date=None,
+                add_offset=0,
+                limit=limit,
+                max_id=0,
+                min_id=0,
+                hash=0
+            ))
+            if not history.messages:
+                break
+
+            for msg in reversed(history.messages):
+                try:
+                    await client.send_message(new_channel.id, msg)
+                    total += 1
+                    await asyncio.sleep(0.5)  # Avoid flood wait
+                except Exception as e:
+                    print(f"⚠️ Error sending message: {e}")
+                offset_id = msg.id
+
+        print(f"✅ Finished cloning {total} messages to {new_channel.title}")
+
+if __name__ == '__main__':
+    asyncio.run(main())
