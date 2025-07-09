@@ -4,31 +4,35 @@ import threading
 from telethon import TelegramClient
 from telethon.errors import FloodWaitError, ChannelPrivateError
 from telethon.tl.functions.messages import ImportChatInviteRequest
-from telegram.ext import Updater, CommandHandler
-import telegram
+from telegram import Update, Bot
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 # === CONFIG ===
 api_id = 25494810
 api_hash = '19c0e1aec617479077971013f88cc63f'
-bot_token = '7992906581:AAFYGogkq9j4B4cZY750JCmuBmk5xN8_80w'
+bot_token = '7579631970:AAEChY5HC9RHoTK4rRRLxgHfvh-exac-3b8'
 session_file = "main_clone.session"  # Single account for forwarding
 
-bot = telegram.Bot(token=bot_token)
+bot = Bot(token=bot_token)
 clone_semaphore = asyncio.Semaphore(1)  # One task at a time
 
 # === BOT COMMANDS ===
-def start(update, context):
-    update.message.reply_text("✅ Use:\n/clone <source> <target>\nOnly public or joined groups/channels work.")
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("✅ Use:\n/clone <source> <target>\nOnly public or joined groups/channels work.")
 
-def clone(update, context):
+async def clone(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(context.args) != 2:
-        return update.message.reply_text("❌ Usage:\n/clone <source_link> <target_link>")
+        await update.message.reply_text("❌ Usage:\n/clone <source_link> <target_link>")
+        return
 
     source, target = context.args
     chat_id = update.effective_chat.id
 
-    threading.Thread(target=lambda: asyncio.run(forward_clone(source, target, chat_id))).start()
-    update.message.reply_text("🔁 Forwarding started...")
+    def run_clone():
+        asyncio.run(forward_clone(source, target, chat_id))
+
+    threading.Thread(target=run_clone).start()
+    await update.message.reply_text("🔁 Forwarding started...")
 
 # === FORWARD FUNCTION ===
 async def forward_clone(source_link, target_link, chat_id):
@@ -37,14 +41,13 @@ async def forward_clone(source_link, target_link, chat_id):
         await client.start()
 
         try:
-            # Join groups if needed
             for link in [source_link, target_link]:
                 if "joinchat" in link or "+" in link:
                     try:
                         hash_code = link.split("+")[-1]
                         await client(ImportChatInviteRequest(hash_code))
                     except Exception as e:
-                        bot.send_message(chat_id, f"⚠️ Could not join: {link}\n{e}")
+                        await bot.send_message(chat_id, f"⚠️ Could not join: {link}\n{e}")
 
             source = await client.get_entity(source_link)
             target = await client.get_entity(target_link)
@@ -55,12 +58,10 @@ async def forward_clone(source_link, target_link, chat_id):
 
             async for message in client.iter_messages(source, reverse=True):
                 try:
-                    # Try forwarding
                     await client.forward_messages(target, message.id, from_peer=source)
                     count += 1
                 except Exception as e:
                     if "can't forward" in str(e).lower() or "forbidden" in str(e).lower():
-                        # Try manual upload
                         try:
                             if message.media:
                                 file_path = await message.download_media()
@@ -83,16 +84,16 @@ async def forward_clone(source_link, target_link, chat_id):
                         failed += 1
 
                 if count % 25 == 0:
-                    bot.send_message(chat_id, f"📦 Sent {count} messages...")
+                    await bot.send_message(chat_id, f"📦 Sent {count} messages...")
 
                 await asyncio.sleep(0.5)
 
-            bot.send_message(chat_id, f"✅ Done!\n📤 Total Sent: {count}\n❌ Failed: {failed}\n⏭️ Skipped Unsupported: {skipped}")
+            await bot.send_message(chat_id, f"✅ Done!\n📤 Total Sent: {count}\n❌ Failed: {failed}\n⏭️ Skipped Unsupported: {skipped}")
 
         except ChannelPrivateError:
-            bot.send_message(chat_id, "🚫 Error: One of the channels is private or not joined.")
+            await bot.send_message(chat_id, "🚫 Error: One of the channels is private or not joined.")
         except Exception as e:
-            bot.send_message(chat_id, f"❌ Fatal error:\n{e}")
+            await bot.send_message(chat_id, f"❌ Fatal error:\n{e}")
         finally:
             await client.disconnect()
 
@@ -108,14 +109,11 @@ def main():
             print("✅ Logged in successfully!")
         return
 
-    updater = Updater(bot_token, use_context=True)
-    dp = updater.dispatcher
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("clone", clone))
-
+    app = ApplicationBuilder().token(bot_token).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("clone", clone))
     print("🤖 Bot is running...")
-    updater.start_polling()
-    updater.idle()
+    app.run_polling()
 
 if __name__ == "__main__":
     main()
