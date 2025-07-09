@@ -10,7 +10,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 # === CONFIG ===
 api_id = 25494810
 api_hash = '19c0e1aec617479077971013f88cc63f'
-bot_token = '7579631970:AAEChY5HC9RHoTK4rRRLxgHfvh-exac-3b8'
+bot_token = '7992906581:AAFYGogkq9j4B4cZY750JCmuBmk5xN8_80w'
 session_file = "main_clone.session"  # Single account for forwarding
 
 bot = Bot(token=bot_token)
