@@ -3,26 +3,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>👑 lord Seller👑 – Legal Adult Content Seller</title>
+  <title>👑 Lord Seller 👑 – Vibrant Adult Content Marketplace</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Lord is a legal adult content platform offering high-quality videos and exclusive categories.">
-  <meta name="author" content="lord Seller">
+  <meta name="description" content="Explore a vibrant and diverse collection of legal adult content. Lord Seller offers premium, high-quality videos across exclusive categories.">
+  <meta name="author" content="Lord Seller">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9NFWPEBTV3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9NFWPEBTV3');
-</script>
-
-
-  <!-- Anti-copy protection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NFWPEBTV3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9NFWPEBTV3');
+  </script>
   <script>
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('keydown', e => {
@@ -31,34 +28,15 @@
       }
     });
   </script>
-  
-  <style>
-.custom-short-btn {
-  background-color: #ff4d2d; /* Same orange */
-  color: white;
-  font-weight: bold;
-  border-radius: 12px;
-  padding: 10px 18px;
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease;
-}
-
-.custom-short-btn:hover {
-  background-color: #e13d21;
-  color: white;
-  text-decoration: none;
-}
-</style>
 
   <style>
+    /* General Body and Theming */
     body {
-      background: #000;
-      color: #f0f0f0;
-      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460, #e94560);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       -webkit-user-select: none;
@@ -66,317 +44,319 @@
       -ms-user-select: none;
       user-select: none;
     }
-    .xemperor-post {
-      background: #1c1c1c;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 850px;
-      margin: 40px auto;
-      box-shadow: 0 0 20px #ff4b2b;
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
+
+    /* Main Content Container */
+    .xemperor-post {
+      background: rgba(22, 33, 62, 0.7);
+      padding: 35px;
+      border-radius: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* Headings */
     h1, h2 {
       text-align: center;
-      color: #ffcc00;
-      font-weight: bold;
+      font-weight: 700;
+      background: -webkit-linear-gradient(45deg, #e94560, #ffd700, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
+    h3 {
+      color: #e94560;
+      font-weight: 600;
+    }
+
+    /* Category List Styling */
+    .category-list {
+      padding-left: 0;
+      list-style: none;
+    }
+
     .category-list li {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #333;
-      font-size: 1.05em;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      border-left: 4px solid transparent;
+      background: rgba(15, 52, 96, 0.6);
+      font-size: 1.1em;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
     }
-    .category-list li span.title {
+
+    .category-list li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(233, 69, 96, 0.3);
+      border-left-color: #e94560;
+    }
+
+    .category-list li .title {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: bold;
+      gap: 15px;
+      font-weight: 600;
+      color: #f0f0f0;
     }
-    .category-list li span.price {
+
+    .category-list li .title i {
+      color: #e94560;
+    }
+
+    .category-list li .price {
       color: #00ff88;
-      font-weight: bold;
-      font-size: 1.05em;
+      font-weight: 600;
+      font-size: 1.1em;
     }
+    
+    /* --- Enhanced Button Styles --- */
+    .pro-btn {
+      display: block;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.1em;
+      color: #fff;
+      padding: 14px 28px;
+      margin: 20px auto;
+      border-radius: 12px;
+      max-width: 400px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-glow {
+      background: #e94560;
+      border-color: #e94560;
+      box-shadow: 0 0 5px #e94560, 0 0 15px #e94560;
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 0 10px #e94560, 0 0 30px #e94560, 0 0 50px #e94560;
+      transform: translateY(-3px);
+    }
+
+    .btn-border-anim {
+      background: transparent;
+      border-color: #00c6ff;
+      color: #00c6ff;
+    }
+
+    .btn-border-anim:hover {
+      background: #00c6ff;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .btn-shiny-fill {
+      background: linear-gradient(90deg, #16213e, #0f3460);
+      border-color: #5A72B5;
+    }
+
+    .btn-shiny-fill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-shiny-fill:hover::before {
+      left: 100%;
+    }
+
+    .btn-shiny-fill:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Payment Icons Section */
     .payment-icons {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 15px;
       justify-content: center;
-      margin-top: 15px;
+      margin-top: 20px;
     }
+
     .payment-icons div {
-      background: #292929;
-      padding: 10px 16px;
-      border-radius: 8px;
+      background: rgba(15, 52, 96, 0.8);
+      padding: 12px 20px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
-      font-size: 0.95em;
-      gap: 8px;
-    }
-    .telegram-btn {
-      display: block;
-      background: #ff4b2b;
-      color: white;
-      text-align: center;
-      padding: 14px;
-      margin: 15px auto;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      max-width: 400px;
-      font-size: 1.05em;
-    }
-    .telegram-btn:hover {
-      background: #e0381c;
-    }
-    .features {
-      background: #292929;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-    .features li {
-      padding: 6px 0;
-      border-bottom: 1px solid #444;
-      display: flex;
-      align-items: center;
+      font-size: 1em;
       gap: 10px;
-      font-weight: bold;
+      transition: background-color 0.3s ease;
     }
+
+    .payment-icons div:hover {
+      background-color: #e94560;
+    }
+    
+    /* Features Section */
+    .features {
+      background: rgba(15, 52, 96, 0.6);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .features li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .features i {
+      color: #00ff88;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      font-size: 0.9em;
-      margin-top: 25px;
-      color: #aaa;
+      font-size: 0.95em;
+      margin-top: 30px;
+      color: #b0b0b0;
     }
-    .btn-demo {
-      display: block;
-      width: fit-content;
-      margin: 20px auto;
-      padding: 12px 24px;
-      background-color: #007bff;
+
+    /* Popup Modal Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-box {
+      background: #1a1a2e;
+      border-radius: 15px;
+      max-width: 90%;
+      width: 550px;
+      box-shadow: 0 0 30px #e94560;
+      position: relative;
+      animation: fadeIn 0.4s ease;
+      padding: 25px;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.2rem;
       color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
-    .btn-demo:hover {
-      background-color: #0056b3;
+
+    .popup-close:hover {
+      color: #e94560;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
       .xemperor-post {
         margin: 20px;
-        padding: 20px;
+        padding: 25px;
       }
     }
-      
   </style>
-
 </head>
 <body>
 
-
   <div class="xemperor-post">
-    <h1>👑 lord Seller 👑<br>Trusted Legal Adult Content Seller</h1>
-    <p style="text-align:center;">📦 <strong>Verified, Legal & Exclusive Content</strong> – Only Premium, 100% Compliant Collections</p>
-<p style="text-align:center;">Trusted Seller Telegram</p>
-    <!-- 🔘 Demo Button -->
-    <a href="demo" class="btn-demo"><i class="bi bi-collection-play"></i> View All Demos</a>
-    <!-- Sales Popup -->
-<div class="sales-popup-overlay" id="salesPopupOverlay"></div>
-  <hr style="margin: 20px 0;">
-  <div class="xemperor-post">
-    <h3>👑 Lord Seller 👑</h3>
-    <p>📦 <strong>Verified, Legal & Exclusive Content</strong></p>
-    <p>Only Premium, 100% Compliant Collections</p>
-    <p>Trusted Seller Telegram</p>
-    <a class="telegram-btn" href="https://t.me/viplordxxi" target="_blank">💬 Message @viplordxxi (Main)</a>
-  </div>
-</div>
-<!-- Popup Modal -->
-<div id="popupModal" class="popup-overlay">
-  <div class="popup-box">
-    <span class="popup-close" id="closePopup">&times;</span>
-    <div class="xemperor-post">
-      <h3>👑 Lord Seller 👑</h3>
-      <p>📦 <strong>Verified, Legal & Exclusive Content</strong></p>
-      <p>Only Premium, 100% Compliant Collections</p>
-      <p>Trusted Seller on Telegram</p>
-      <a class="telegram-btn" href="https://t.me/viplordxxi" target="_blank">
-        💬 Message @viplordxx (Main)
-      </a>
-    </div>
-  </div>
-</div>
+    <h1>👑 Lord Seller 👑<br>Trusted Legal Adult Content Seller</h1>
+    <p style="text-align:center; font-size: 1.1em;">📦 <strong>Verified, Legal & Exclusive Content</strong> – Only Premium, 100% Compliant Collections</p>
+    <p style="text-align:center;">Your Trusted Seller on Telegram</p>
 
-<style>
-/* Overlay */
-.popup-overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    <a href="demo" class="pro-btn btn-border-anim">
+      🎬 View All Demos 
+    </a>
 
-/* Popup Box */
-.popup-box {
-  background: #1c1c1c;
-  border-radius: 12px;
-  max-width: 90%;
-  width: 500px;
-  box-shadow: 0 0 20px #ff4b2b;
-  position: relative;
-  animation: fadeIn 0.3s ease;
-  padding: 20px;
-}
+    <hr style="border-color: rgba(255, 255, 255, 0.2); margin: 30px 0;">
 
-/* Close Button */
-.popup-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.popup-close:hover {
-  color: #ff4b2b;
-}
-
-/* Fade animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-</style>
-
-<script>
-// Show popup on load
-window.onload = () => {
-  document.getElementById("popupModal").style.display = "flex";
-};
-
-// Close popup
-document.getElementById("closePopup").onclick = () => {
-  document.getElementById("popupModal").style.display = "none";
-};
-
-// Escape key support
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    document.getElementById("popupModal").style.display = "none";
-  }
-});
-</script>
-
-
-
-    <h2>🔥 Categories Included</h2>
-   <ul class="category-list">
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> MOM AND SON</span>
-            <span class="price">6251+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> BRO-SIS </span>
-            <span class="price">3255+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Teen</span>
-            <span class="price">3552+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Shemale</span>
-            <span class="price">2145+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> GAY x Combo (cp + Adult )</span>
-            <span class="price">3654+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Hard Blackmail</span>
-            <span class="price">2634+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Snap Insta Leak</span>
-            <span class="price">6324+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> CCTV + Ip Cam (4 Groups)</span>
-            <span class="price">8562+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> FEMDOM PREMIUM</span>
-            <span class="price">2135+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Usa Cp</span>
-            <span class="price">2351+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> SHEMALE (2 Groups)</span>
-            <span class="price">3215+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> HIJAB</span>
-            <span class="price">3251+ Vidoes</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Black Teen</span>
-            <span class="price">1895+  Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Omegle X Snapgod</span>
-            <span class="price">3210+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>R@pe And Forced</span>
-            <span class="price">5623+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> ANIMAL GIRL + Teen </span>
-            <span class="price">3168+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> DARKWEB</span>
-            <span class="price">5621+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Dad Daughter</span>
-            <span class="price">3210+ Videos</span>
-          </li>
-          <li>
-            <span class="title"><i class="bi bi-camera-reels"></i> Cp k!ds</span>
-            <span class="price">3216+ Videos</span>
-          </li>
-            <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Dad Son</span>
-            <span class="price">3236+ Videos</span>
-          </li>
-            <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Only Fans</span>
-            <span class="price">8213+ Videos</span>
-          </li>
-                      <li>
-            <span class="title"><i class="bi bi-camera-reels"></i>Celebrity Leaks</span>
-            <span class="price">8513+ Videos</span>
-          </li>
-        </ul>
-        </ul>
+    <div id="popupModal" class="popup-overlay">
+      <div class="popup-box">
+        <span class="popup-close" id="closePopup">&times;</span>
+        <div class="xemperor-post" style="margin: 0; padding: 10px; box-shadow: none; border: none; background: transparent;">
+          <h3>👑 Welcome to Lord Seller 👑</h3>
+          <p>📦 <strong>Verified, Legal & Exclusive Content</strong></p>
+          <p>Trusted Seller on Telegram</p>
+          <a class="pro-btn btn-glow" href="https://t.me/viplordxxi" target="_blank">
+            💬 Message @viplordxx (Main)
+          </a>
+        </div>
       </div>
-   <!-- (Beginning part unchanged) -->
-<!-- 📲 How to Order -->
-<h2>📲 How to Order</h2>
-<a class="telegram-btn" href="https://t.me/viplordxxi" target="_blank">💬 Message @viplordxxi (Main)</a>
-<a class="telegram-btn" href="https://t.me/viplord_bot" target="_blank">🤖 Use Bot If Limited</a>
-  
+    </div>
+
+    <h2>🔥 Our Categories</h2>
+    <ul class="category-list">
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> MOM AND SON</span><span class="price">6251+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> BRO-SIS</span><span class="price">3255+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Teen</span><span class="price">3552+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Shemale</span><span class="price">2145+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> GAY x Combo (cp + Adult )</span><span class="price">3654+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Hard Blackmail</span><span class="price">2634+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Snap Insta Leak</span><span class="price">6324+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> CCTV + Ip Cam (4 Groups)</span><span class="price">8562+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> FEMDOM PREMIUM</span><span class="price">2135+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Usa Cp</span><span class="price">2351+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> SHEMALE (2 Groups)</span><span class="price">3215+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> HIJAB</span><span class="price">3251+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Black Teen</span><span class="price">1895+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Omegle X Snapgod</span><span class="price">3210+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> R@pe And Forced</span><span class="price">5623+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> ANIMAL GIRL + Teen</span><span class="price">3168+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> DARKWEB</span><span class="price">5621+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Dad Daughter</span><span class="price">3210+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Cp k!ds</span><span class="price">3216+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Dad Son</span><span class="price">3236+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Only Fans</span><span class="price">8213+ Videos</span></li>
+        <li><span class="title"><i class="bi bi-camera-reels-fill"></i> Celebrity Leaks</span><span class="price">8513+ Videos</span></li>
+    </ul>
+
+    <h2>📲 How to Order</h2>
+    <a class="pro-btn btn-glow" href="https://t.me/viplordxxi" target="_blank">💬 Message @viplordxxi (Main)</a>
+    <a class="pro-btn btn-shiny-fill" href="https://t.me/viplord_bot" target="_blank">🤖 Use Bot If Limited (Shiny Effect)</a>
+
     <h2>💳 Payment Methods</h2>
     <div class="payment-icons">
       <div><i class="bi bi-qr-code-scan"></i> UPI / QR</div>
@@ -397,36 +377,46 @@ document.addEventListener("keydown", (e) => {
       </ul>
     </div>
 
+    <div style="background: rgba(15, 52, 96, 0.6); color:#f0f0f0; border-left: 4px solid #00ff88; padding: 20px; border-radius: 12px; margin-top: 25px;">
+      <strong>📦 Delivery Info:</strong><br>
+      All content is delivered securely via <strong>Telegram</strong> or <strong>Mega.nz links</strong> after order confirmation.<br>
+      🕒 <em>Fast & discreet delivery guaranteed.</em>
+    </div>
 
+    <h2>📌 Special Requests</h2>
+    <div class="features">
+      <p>If you're looking for rare or exclusive content not listed above, feel free to <strong>contact us directly</strong>.</p>
+      <p>We can assist with unique folders or private collections for rare content.</p>
+      <p>📩 Contact us on <a href="https://t.me/viplordxxi" style="color: #e94560;" target="_blank">@viplordxxi</a></p>
+    </div>
 
-
-<!-- ✅ Content Delivery Info Box (Dark Theme) -->
-<div style="background-color:#1c1c1c; color:#f0f0f0; border-left: 4px solid #00ff88; padding: 15px; border-radius: 8px; margin-top: 20px;">
-  <strong>📦 Delivery Info:</strong><br>
-  All content is delivered securely via <strong>Telegram</strong> or <strong>Mega.nz links</strong> after order confirmation.<br>
-  🕒 <em>Fast & discreet delivery guaranteed.</em>
-</div>
-
-
-
-<!-- ✅ NEW SECTION -->
-<h2>📌 Special Requests</h2>
-<div class="features">
-  <p>If you're looking for rare or exclusive content not listed above, feel free to <strong>contact us directly</strong>.</p>
-  <p>We can help with unique folders or private collections. As you already know about rare content.</p>
-  <p>📩 Contact us on <a href="https://t.me/viplordxxi" class="text-warning" target="_blank">@viplordxxi</a></p>
-</div>
-
-<!-- Footer (unchanged) -->
-<footer style="text-align: center; padding: 20px; font-size: 14px;">
-  🕊️ All content is shared with consent or legally acquired. No illegal or non-consensual material is included.<br>
-  <a href="dmca.html" class="text-secondary">DMCA</a> |
-  <a href="privacy.html" class="text-secondary">Privacy Policy</a> |
-  <a href="https://telegram.me/viplordxx" class="text-secondary">Contact Developer</a><br>
-  <span style="color: gray;">Developed by <strong>Developer X</strong> © 2025</span>
-</footer>
-
+    <footer style="text-align: center; padding: 25px; font-size: 14px;">
+      🕊️ All content is shared with consent or legally acquired. No illegal or non-consensual material is included.<br>
+      <a href="dmca.html" class="text-secondary">DMCA</a> |
+      <a href="privacy.html" class="text-secondary">Privacy Policy</a> |
+      <a href="https://telegram.me/viplordxx" class="text-secondary">Contact Developer</a><br>
+      <span style="color: gray;">Developed by <strong>Developer X</strong> © 2025</span>
+    </footer>
   </div>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'949e53820d9b2e53',t:'MTc0ODk0NDY0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script>
+    // Show popup on load
+    window.onload = () => {
+      document.getElementById("popupModal").style.display = "flex";
+    };
+
+    // Close popup on button click
+    document.getElementById("closePopup").onclick = () => {
+      document.getElementById("popupModal").style.display = "none";
+    };
+
+    // Close popup with Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.getElementById("popupModal").style.display = "none";
+      }
+    });
+  </script>
+
+</body>
 </html>
