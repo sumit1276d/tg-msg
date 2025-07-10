@@ -16,7 +16,7 @@ session_folder = 'sessions'
 admin_username = 'venroxhub'
 joinhider = 'joinhiderrobot'
 bio_text = "One-time payment, lifetime access"
-media_source = 'https://t.me/YOUR_MEDIA_SOURCE'  # <-- Replace with your media group/channel username or ID
+media_source = 'ttps://t.me/+15kZMlIeH7ZkY2Y1'  # <-- Replace with your media group/channel username or ID
 text_message = "🔥 Welcome to the Premium Vault!\n\nLifetime access granted. Enjoy the leaks!"  # <-- Your message
 
 bot = Bot(token=bot_token)
