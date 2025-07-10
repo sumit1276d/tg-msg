@@ -7,8 +7,6 @@
   <meta name="description" content="Lord X Hub offers premium, legal adult content with exclusive collections, fast delivery, and a trusted community hub.">
   <meta name="author" content="Lord X Hub">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Google Fonts: Poppins and Inter -->
@@ -31,7 +29,30 @@
     });
   </script>
   <style>
-    /* Custom animations */
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #e5e7eb;
+      min-height: 100vh;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Animations */
     @keyframes fade-in {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -54,9 +75,422 @@
     .border-dance {
       animation: border-dance 2s infinite;
     }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .animate-pulse {
+      animation: pulse 2s infinite;
+    }
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
+    }
+    /* Navigation Bar */
+    nav {
+      background-color: #111827;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 2px solid transparent;
+    }
+    nav .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+    }
+    nav img.logo {
+      height: 3rem;
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+    nav .nav-links a {
+      color: #d1d5db;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    nav .nav-links a:hover {
+      color: #dc2626;
+    }
+    /* Container Box */
+    .container-box {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .container-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 15px rgba(255, 75, 43, 0.5);
+    }
+    /* Banner */
+    .banner {
+      background-color: #dc2626;
+      color: #fff;
+      text-align: center;
+      padding: 0.75rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+    .hero-section {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+      text-align: center;
+    }
+    .hero-section h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #facc15;
+      margin-bottom: 1rem;
+    }
+    .hero-section p {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+    .hero-section .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-red {
+      background-color: #dc2626;
+      color: #fff;
+    }
+    .btn-red:hover {
+      background-color: #b91c1c;
+      transform: scale(1.05);
+    }
+    .btn-blue {
+      background-color: #2563eb;
+      color: #fff;
+    }
+    .btn-blue:hover {
+      background-color: #1d4ed8;
+      transform: scale(1.05);
+    }
+    /* Categories */
+    .categories {
+      margin-top: 3rem;
+    }
+    .categories h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #facc15;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .categories .grid {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+    }
+    .categories .grid ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .categories .grid li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      border-bottom: 1px solid #dc2626;
+      transition: background-color 0.3s ease;
+      border-radius: 0.5rem;
+    }
+    .categories .grid li:hover {
+      background-color: #374151;
+    }
+    .categories .grid li span {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+    .categories .grid li span:last-child {
+      color: #22c55e;
+    }
+    /* How to Order */
+    .order-section {
+      margin-top: 3rem;
+    }
+    .order-section h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #facc15;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .order-section .content {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+    }
+    .order-section ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+    .order-section ol li {
+      margin-bottom: 0.75rem;
+    }
+    .order-section .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    /* Payment Methods */
+    .payment-methods {
+      margin-top: 3rem;
+    }
+    .payment-methods h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #facc15;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .payment-methods .methods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .payment-methods .method {
+      background-color: #374151;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 2px solid transparent;
+      transition: transform 0.3s ease;
+    }
+    .payment-methods .method:hover {
+      transform: scale(1.1);
+    }
+    /* Why Choose Us */
+    .why-choose-us {
+      margin-top: 3rem;
+    }
+    .why-choose-us h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #facc15;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .why-choose-us .content {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+    }
+    .why-choose-us ul {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+    .why-choose-us ul li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .why-choose-us ul li i {
+      color: #22c55e;
+    }
+    /* Testimonials */
+    .testimonials {
+      margin-top: 3rem;
+    }
+    .testimonials h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #facc15;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .testimonials .grid {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .testimonials .grid .testimonial {
+      background-color: #374151;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      border: 2px solid transparent;
+    }
+    .testimonials .grid .testimonial p {
+      font-style: italic;
+      font-size: 1rem;
+    }
+    .testimonials .grid .testimonial p:last-child {
+      margin-top: 0.5rem;
+      color: #9ca3af;
+      font-weight: 600;
+    }
+    /* Delivery Info */
+    .delivery-info {
+      margin-top: 3rem;
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+    }
+    .delivery-info h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .delivery-info p {
+      font-size: 1.125rem;
+    }
+    .delivery-info p:last-child {
+      color: #9ca3af;
+      font-style: italic;
+    }
+    /* Special Requests */
+    .special-requests {
+      margin-top: 3rem;
+    }
+    .special-requests h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #facc15;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .special-requests .content {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 896px;
+      margin: 0 auto;
+      border: 2px solid transparent;
+    }
+    .special-requests p {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    .special-requests a.btn {
+      display: block;
+      margin-top: 1rem;
+    }
+    /* Footer */
+    footer {
+      background-color: #111827;
+      padding: 1.5rem;
+      text-align: center;
+      color: #9ca3af;
+      border-top: 2px solid transparent;
+    }
+    footer p {
+      font-size: 1rem;
+    }
+    footer .links {
+      margin-top: 0.5rem;
+    }
+    footer .links a {
+      color: #6b7280;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+    footer .links a:hover {
+      color: #dc2626;
+    }
+    /* Popup Modal */
+    #popupModal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    #popupModal.hidden {
+      display: none;
+    }
+    #popupModal .modal-content {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      max-width: 448px;
+      width: 100%;
+      border: 2px solid transparent;
+      position: relative;
+    }
+    #popupModal .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    #popupModal .close:hover {
+      color: #dc2626;
+    }
+    #popupModal h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #facc15;
+      margin-bottom: 1rem;
+    }
+    #popupModal p {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    #popupModal p:last-child {
+      color: #9ca3af;
+    }
+    #popupModal a.btn {
+      display: block;
+      margin-top: 1rem;
     }
     /* Back to Top Button */
     #back-to-top {
@@ -64,8 +498,8 @@
       bottom: 20px;
       right: 20px;
       background-color: #ff4b2b;
-      color: white;
-      padding: 12px;
+      color: #fff;
+      padding: 0.75rem;
       border-radius: 50%;
       display: none;
       z-index: 1000;
@@ -75,307 +509,235 @@
       background-color: #e0381c;
       transform: scale(1.1);
     }
-    /* Logo styling */
-    .logo {
-      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
-    }
-    /* Typography */
-    body {
-      font-family: 'Inter', sans-serif;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    h1, h2, h3 {
-      font-family: 'Poppins', sans-serif;
-    }
-    /* Container hover effect */
-    .container-box {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .container-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 15px rgba(255, 75, 43, 0.5);
-    }
   </style>
 </head>
-<body class="bg-black text-gray-100 min-h-screen">
+<body>
   <!-- Navigation Bar -->
-  <nav class="bg-gray-900 py-4 sticky top-0 z-50 border-b-2 border-dance container-box">
-    <div class="container mx-auto px-4 flex items-center justify-between">
+  <nav class="border-dance container-box">
+    <div class="container">
       <img
         src="https://via.placeholder.com/150x50/ff4b2b/ffffff?text=Lord+X+Hub+Logo"
         alt="Lord X Hub Logo"
-        class="h-12 logo animate-pulse"
+        class="logo animate-pulse"
       />
-      <div class="flex gap-4">
-        <a href="#categories" class="text-gray-300 hover:text-red-600 transition-colors">Categories</a>
-        <a href="#order" class="text-gray-300 hover:text-red-600 transition-colors">Order</a>
-        <a href="#contact" class="text-gray-300 hover:text-red-600 transition-colors">Contact</a>
+      <div class="nav-links">
+        <a href="#categories">Categories</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
   <!-- Limited Time Offer Banner -->
-  <section class="bg-red-600 text-white text-center py-3 animate-fade-in container-box border-2 border-dance">
-    <p class="text-lg font-semibold">🎉 Limited Time Offer: 20% Off All Collections! Order Now! 🎉</p>
+  <section class="banner animate-fade-in border-dance container-box">
+    <p>🎉 Limited Time Offer: 20% Off All Collections! Order Now! 🎉</p>
   </section>
 
   <!-- Main Content -->
-  <main class="container mx-auto px-4 py-12">
-    <section class="bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance container-box animate-fade-in">
-      <h1 class="text-4xl font-bold text-center text-yellow-400 mb-4">👑 Lord X Hub 👑</h1>
-      <p class="text-center text-lg mb-4 font-medium">
-        <strong>Premium, Legal & Exclusive Adult Content</strong> – 100% Compliant Collections
-      </p>
-      <p class="text-center text-gray-400 mb-6">Trusted Community Hub on Telegram Since 2023</p>
-      <div class="flex flex-col items-center gap-4">
-        <a
-          href="https://t.me/viplordxxi"
-          target="_blank"
-          class="bg-red-600 text-white text-center py-3 px-8 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105"
-        >
-          💬 Buy Now @viplordxxi
-        </a>
-        <a
-          href="demo"
-          class="bg-blue-600 text-white text-center py-3 px-8 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105"
-        >
-          <i class="bi bi-collection-play mr-2"></i> View Free Demos
-        </a>
+  <main>
+    <section class="hero-section animate-fade-in border-dance container-box">
+      <h1>👑 Lord X Hub 👑</h1>
+      <p><strong>Premium, Legal & Exclusive Adult Content</strong> – 100% Compliant Collections</p>
+      <p style="color: #9ca3af;">Trusted Community Hub on Telegram Since 2023</p>
+      <div class="buttons">
+        <a href="https://t.me/viplordxxi" target="_blank" class="btn btn-red">💬 Buy Now @viplordxxi</a>
+        <a href="demo" class="btn btn-blue"><i class="bi bi-collection-play" style="margin-right: 0.5rem;"></i> View Free Demos</a>
       </div>
     </section>
 
     <!-- Categories -->
-    <section class="mt-12" id="categories">
-      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6 animate-fade-in">🔥 Categories Included</h2>
-      <div class="bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance container-box">
-        <ul class="grid md:grid-cols-2 gap-4">
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Mom and Son</span>
-            <span class="text-green-400 font-bold">6251+ Videos</span>
+    <section class="categories" id="categories">
+      <h2 class="animate-fade-in">🔥 Categories Included</h2>
+      <div class="grid border-dance container-box">
+        <ul>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Mom and Son</span>
+            <span>6251+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Bro-Sis</span>
-            <span class="text-green-400 font-bold">3255+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Bro-Sis</span>
+            <span>3255+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Teen</span>
-            <span class="text-green-400 font-bold">3552+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Teen</span>
+            <span>3552+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Shemale</span>
-            <span class="text-green-400 font-bold">2145+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Shemale</span>
+            <span>2145+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Gay x Combo (CP + Adult)</span>
-            <span class="text-green-400 font-bold">3654+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Gay x Combo (CP + Adult)</span>
+            <span>3654+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Hard Blackmail</span>
-            <span class="text-green-400 font-bold">2634+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Hard Blackmail</span>
+            <span>2634+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Snap Insta Leak</span>
-            <span class="text-green-400 font-bold">6324+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Snap Insta Leak</span>
+            <span>6324+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>CCTV + IP Cam (4 Groups)</span>
-            <span class="text-green-400 font-bold">8562+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>CCTV + IP Cam (4 Groups)</span>
+            <span>8562+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Femdom Premium</span>
-            <span class="text-green-400 font-bold">2135+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Femdom Premium</span>
+            <span>2135+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>USA CP</span>
-            <span class="text-green-400 font-bold">2351+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>USA CP</span>
+            <span>2351+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Shemale (2 Groups)</span>
-            <span class="text-green-400 font-bold">3215+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Shemale (2 Groups)</span>
+            <span>3215+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Hijab</span>
-            <span class="text-green-400 font-bold">3251+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Hijab</span>
+            <span>3251+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Black Teen</span>
-            <span class="text-green-400 font-bold">1895+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Black Teen</span>
+            <span>1895+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Omegle x Snapgod</span>
-            <span class="text-green-400 font-bold">3210+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Omegle x Snapgod</span>
+            <span>3210+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Rape and Forced</span>
-            <span class="text-green-400 font-bold">5623+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Rape and Forced</span>
+            <span>5623+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Animal Girl + Teen</span>
-            <span class="text-green-400 font-bold">3168+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Animal Girl + Teen</span>
+            <span>3168+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Darkweb</span>
-            <span class="text-green-400 font-bold">5621+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Darkweb</span>
+            <span>5621+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Dad Daughter</span>
-            <span class="text-green-400 font-bold">3210+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Dad Daughter</span>
+            <span>3210+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>CP Kids</span>
-            <span class="text-green-400 font-bold">3216+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>CP Kids</span>
+            <span>3216+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Dad Son</span>
-            <span class="text-green-400 font-bold">3236+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Dad Son</span>
+            <span>3236+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>OnlyFans</span>
-            <span class="text-green-400 font-bold">8213+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>OnlyFans</span>
+            <span>8213+ Videos</span>
           </li>
-          <li class="flex justify-between items-center py-3 border-b border-red-600 hover:bg-gray-700 transition-colors rounded-lg px-2">
-            <span class="font-bold text-lg"><i class="bi bi-camera-reels mr-2"></i>Celebrity Leaks</span>
-            <span class="text-green-400 font-bold">8513+ Videos</span>
+          <li>
+            <span><i class="bi bi-camera-reels" style="margin-right: 0.5rem;"></i>Celebrity Leaks</span>
+            <span>8513+ Videos</span>
           </li>
         </ul>
       </div>
     </section>
 
     <!-- How to Order -->
-    <section class="mt-12" id="order">
-      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6 animate-fade-in">📲 How to Order</h2>
-      <div class="bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance container-box">
-        <ol class="list-decimal list-inside space-y-3 text-lg">
-          <li>Contact us on <a href="https://t.me/viplordxxi" class="text-yellow-400 hover:underline" target="_blank">@viplordxxi</a> or use our bot.</li>
+    <section class="order-section" id="order">
+      <h2 class="animate-fade-in">📲 How to Order</h2>
+      <div class="content border-dance container-box">
+        <ol>
+          <li>Contact us on <a href="https://t.me/viplordxxi" style="color: #facc15;" target="_blank">@viplordxxi</a> or use our bot.</li>
           <li>Choose your collection and confirm your order.</li>
           <li>Pay securely via UPI, PayPal, Crypto, or Gift Cards.</li>
           <li>Receive your content via Telegram or Mega.nz links within minutes.</li>
         </ol>
-        <div class="flex flex-col items-center gap-4 mt-6">
-          <a
-            href="https://t.me/viplordxxi"
-            target="_blank"
-            class="bg-red-600 text-white text-center py-3 px-8 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105"
-          >
-            💬 Order Now @viplordxxi
-          </a>
-          <a
-            href="https://t.me/viplord_bot"
-            target="_blank"
-            class="bg-red-600 text-white text-center py-3 px-8 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105"
-          >
-            🤖 Use Bot If Limited
-          </a>
+        <div class="buttons">
+          <a href="https://t.me/viplordxxi" target="_blank" class="btn btn-red">💬 Order Now @viplordxxi</a>
+          <a href="https://t.me/viplord_bot" target="_blank" class="btn btn-red">🤖 Use Bot If Limited</a>
         </div>
       </div>
     </section>
 
     <!-- Payment Methods -->
-    <section class="mt-12">
-      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6 animate-fade-in">💳 Payment Methods</h2>
-      <div class="flex flex-wrap justify-center gap-4 container-box">
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center gap-2 border-2 border-dance transform transition-transform hover:scale-110">
-          <i class="bi bi-qr-code-scan text-xl"></i><span>UPI / QR</span>
-        </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center gap-2 border-2 border-dance transform transition-transform hover:scale-110">
-          <i class="bi bi-paypal text-xl"></i><span>PayPal</span>
-        </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center gap-2 border-2 border-dance transform transition-transform hover:scale-110">
-          <i class="bi bi-bank text-xl"></i><span>Bank Transfer</span>
-        </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center gap-2 border-2 border-dance transform transition-transform hover:scale-110">
-          <i class="bi bi-currency-bitcoin text-xl"></i><span>Binance (Crypto)</span>
-        </div>
-        <div class="bg-gray-700 p-3 rounded-lg flex items-center gap-2 border-2 border-dance transform transition-transform hover:scale-110">
-          <i class="bi bi-gift text-xl"></i><span>Gift Cards</span>
-        </div>
+    <section class="payment-methods">
+      <h2 class="animate-fade-in">💳 Payment Methods</h2>
+      <div class="methods container-box">
+        <div class="method border-dance"><i class="bi bi-qr-code-scan" style="font-size: 1.25rem;"></i>UPI / QR</div>
+        <div class="method border-dance"><i class="bi bi-paypal" style="font-size: 1.25rem;"></i>PayPal</div>
+        <div class="method border-dance"><i class="bi bi-bank" style="font-size: 1.25rem;"></i>Bank Transfer</div>
+        <div class="method border-dance"><i class="bi bi-currency-bitcoin" style="font-size: 1.25rem;"></i>Binance (Crypto)</div>
+        <div class="method border-dance"><i class="bi bi-gift" style="font-size: 1.25rem;"></i>Gift Cards</div>
       </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="mt-12">
-      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6 animate-fade-in">🛡️ Why Choose Us?</h2>
-      <div class="bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance container-box">
-        <ul class="space-y-3 text-lg">
-          <li class="flex items-center gap-3"><i class="bi bi-check-circle-fill text-green-400"></i>100% Legal & Ethical Sources</li>
-          <li class="flex items-center gap-3"><i class="bi bi-check-circle-fill text-green-400"></i>Fast Delivery Within Minutes</li>
-          <li class="flex items-center gap-3"><i class="bi bi-check-circle-fill text-green-400"></i>Payment Proofs Available</li>
-          <li class="flex items-center gap-3"><i class="bi bi-check-circle-fill text-green-400"></i>Daily Updates & New Drops</li>
-          <li class="flex items-center gap-3"><i class="bi bi-check-circle-fill text-green-400"></i>24/7 Customer Support</li>
+    <section class="why-choose-us">
+      <h2 class="animate-fade-in">🛡️ Why Choose Us?</h2>
+      <div class="content border-dance container-box">
+        <ul>
+          <li><i class="bi bi-check-circle-fill"></i>100% Legal & Ethical Sources</li>
+          <li><i class="bi bi-check-circle-fill"></i>Fast Delivery Within Minutes</li>
+          <li><i class="bi bi-check-circle-fill"></i>Payment Proofs Available</li>
+          <li><i class="bi bi-check-circle-fill"></i>Daily Updates & New Drops</li>
+          <li><i class="bi bi-check-circle-fill"></i>24/7 Customer Support</li>
         </ul>
       </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="mt-12">
-      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6 animate-fade-in">🌟 What Our Customers Say</h2>
-      <div class="bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance container-box">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="p-4 bg-gray-700 rounded-lg border-2 border-dance container-box">
-            <p class="italic">"Fast delivery and top-quality content! Highly recommend Lord X Hub."</p>
-            <p class="mt-2 text-gray-400 font-semibold">– Anonymous Customer</p>
-          </div>
-          <div class="p-4 bg-gray-700 rounded-lg border-2 border-dance container-box">
-            <p class="italic">"Trusted service with excellent support. Worth every penny!"</p>
-            <p class="mt-2 text-gray-400 font-semibold">– Satisfied Buyer</p>
-          </div>
+    <section class="testimonials">
+      <h2 class="animate-fade-in">🌟 What Our Customers Say</h2>
+      <div class="grid border-dance container-box">
+        <div class="testimonial border-dance container-box">
+          <p>"Fast delivery and top-quality content! Highly recommend Lord X Hub."</p>
+          <p>– Anonymous Customer</p>
+        </div>
+        <div class="testimonial border-dance container-box">
+          <p>"Trusted service with excellent support. Worth every penny!"</p>
+          <p>– Satisfied Buyer</p>
         </div>
       </div>
     </section>
 
     <!-- Delivery Info -->
-    <section class="mt-12 bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance animate-fade-in container-box">
-      <h3 class="text-xl font-bold">📦 Delivery Info</h3>
-      <p class="text-lg">All content is delivered securely via <strong>Telegram</strong> or <strong>Mega.nz links</strong> after order confirmation.</p>
-      <p class="text-gray-400"><em>Fast & discreet delivery guaranteed.</em></p>
+    <section class="delivery-info animate-fade-in border-dance container-box">
+      <h3>📦 Delivery Info</h3>
+      <p>All content is delivered securely via <strong>Telegram</strong> or <strong>Mega.nz links</strong> after order confirmation.</p>
+      <p>Fast & discreet delivery guaranteed.</p>
     </section>
 
     <!-- Special Requests -->
-    <section class="mt-12" id="contact">
-      <h2 class="text-3xl font-bold text-center text-yellow-400 mb-6 animate-fade-in">📌 Special Requests</h2>
-      <div class="bg-gray-800 p-8 rounded-xl max-w-4xl mx-auto border-2 border-dance container-box">
-        <p class="text-lg">Looking for rare or exclusive content? <strong>Contact us directly</strong> for custom folders or private collections.</p>
-        <p class="mt-2">📩 Reach us on <a href="https://t.me/viplordxxi" class="text-yellow-400 hover:underline" target="_blank">@viplordxxi</a></p>
-        <a
-          href="https://t.me/viplordxxi"
-          target="_blank"
-          class="block mt-4 bg-red-600 text-white text-center py-3 px-8 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105"
-        >
-          💬 Contact Now
-        </a>
+    <section class="special-requests" id="contact">
+      <h2 class="animate-fade-in">📌 Special Requests</h2>
+      <div class="content border-dance container-box">
+        <p>Looking for rare or exclusive content? <strong>Contact us directly</strong> for custom folders or private collections.</p>
+        <p>📩 Reach us on <a href="https://t.me/viplordxxi" style="color: #facc15;" target="_blank">@viplordxxi</a></p>
+        <a href="https://t.me/viplordxxi" target="_blank" class="btn btn-red">💬 Contact Now</a>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 py-6 text-center text-gray-400 border-t-2 border-dance container-box">
+  <footer class="border-dance container-box">
     <p>🕊️ All content is shared with consent or legally acquired. No illegal or non-consensual material is included.</p>
-    <div class="mt-2">
-      <a href="dmca.html" class="text-gray-500 hover:text-red-600 mx-2">DMCA</a> |
-      <a href="privacy.html" class="text-gray-500 hover:text-red-600 mx-2">Privacy Policy</a> |
-      <a href="https://telegram.me/viplordxx" class="text-gray-500 hover:text-red-600 mx-2">Contact Developer</a>
+    <div class="links">
+      <a href="dmca.html">DMCA</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="https://telegram.me/viplordxx">Contact Developer</a>
     </div>
-    <p class="mt-2">Developed by <strong>Developer X</strong> © 2025</p>
+    <p>Developed by <strong>Developer X</strong> © 2025</p>
   </footer>
 
   <!-- Popup Modal -->
-  <div id="popupModal" class="fixed inset-0 bg-black bg-opacity-85 flex items-center justify-center z-50 hidden">
-    <div class="bg-gray-800 p-8 rounded-xl max-w-md w-full border-2 border-dance container-box animate-slide-in">
-      <span id="closePopup" class="absolute top-4 right-4 text-2xl cursor-pointer text-white hover:text-red-600">×</span>
-      <h3 class="text-2xl font-bold text-yellow-400 mb-4">👑 Lord X Hub 👑</h3>
-      <p class="text-lg"><strong>Exclusive, Legal Content Awaits!</strong></p>
+  <div id="popupModal" class="hidden">
+    <div class="modal-content animate-slide-in border-dance container-box">
+      <span id="closePopup" class="close">×</span>
+      <h3>👑 Lord X Hub 👑</h3>
+      <p><strong>Exclusive, Legal Content Awaits!</strong></p>
       <p>Premium Collections Delivered in Minutes</p>
-      <p class="text-gray-400">Trusted Community Hub Since 2023</p>
-      <a
-        href="https://t.me/viplordxxi"
-        target="_blank"
-        class="block mt-4 bg-red-600 text-white text-center py-3 px-8 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors duration-300 transform hover:scale-105"
-      >
-        💬 Start Shopping Now
-      </a>
+      <p>Trusted Community Hub Since 2023</p>
+      <a href="https://t.me/viplordxxi" target="_blank" class="btn btn-red">💬 Start Shopping Now</a>
     </div>
   </div>
 
