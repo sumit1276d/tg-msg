@@ -16,7 +16,7 @@ session_folder = 'sessions'
 admin_username = 'venroxhub'
 joinhider = 'joinhiderrobot'
 bio_text = "One-time payment, lifetime access"
-media_source = '+15kZMlIeH7ZkY2Y1'  # Private invite link code only (NO https)
+media_source = '+15kZMlIeH7ZkY2Y1'
 text_message = (
     "✅ 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗰𝗼𝗹𝗹𝗲𝗰𝘁𝗶𝗼𝗻 𝗳𝗼𝗿 𝗽𝗿𝗲𝗺𝗶𝘂𝗺 𝗰𝘂𝘀𝘁𝗼𝗺𝗲𝗿𝘀 ✅\n"
     "✅ 𝗔𝗹𝗹 𝗽𝗮𝗶𝗱, 𝗦𝗲𝗹𝗲𝗰𝘁 𝗮𝗻𝗱 𝗯𝘂𝘆 ✅\n\n"
@@ -72,7 +72,7 @@ async def clone_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def clone_groups(count, chat_id):
     sessions = [f for f in os.listdir(session_folder) if f.endswith(".session")]
     if not sessions:
-        bot.send_message(chat_id, "❌ No sessions found in 'sessions/' folder.")
+        await bot.send_message(chat_id, "❌ No sessions found in 'sessions/' folder.")
         return
 
     for i in range(min(count, len(sessions))):
@@ -126,12 +126,12 @@ async def clone_groups(count, chat_id):
                         except Exception as e:
                             print(f"❌ Failed to forward message {message.id}: {e}")
             except Exception as e:
-                bot.send_message(chat_id, f"❌ Media source error:\n{e}")
+                await bot.send_message(chat_id, f"❌ Media source error:\n{e}")
 
-            bot.send_message(chat_id, f"✅ Group created: {group.title}")
+            await bot.send_message(chat_id, f"✅ Group created: {group.title}")
 
         except Exception as e:
-            bot.send_message(chat_id, f"❌ Error in session {sessions[i]}:\n{e}")
+            await bot.send_message(chat_id, f"❌ Error in session {sessions[i]}:\n{e}")
         finally:
             await client.disconnect()
 
